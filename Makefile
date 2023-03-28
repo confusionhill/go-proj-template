@@ -7,3 +7,5 @@ rest-down:
 rest-init:
 	go mod vendor
 	echo "Project initiated"
+rest-run:
+	go run application/rest/*.go

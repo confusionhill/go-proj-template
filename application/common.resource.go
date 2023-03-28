@@ -37,7 +37,7 @@ func InitResource(cfg *config.MainConfig) (*CommonResource, error) {
 	r.Redis = rdc
 	log.Println("REDIS INITIATED!")
 
-	clientOptions := options.Client().ApplyURI("mongodb://mongodb:27017")
+	clientOptions := options.Client().ApplyURI(cfg.Mongo.Host)
 	client, err := mongo.Connect(context.Background(), clientOptions)
 	if err != nil {
 		return nil, err

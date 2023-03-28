@@ -1,21 +1,21 @@
 package hello
 
 import (
-	"context"
 	"fmt"
 	"github.com/labstack/gommon/log"
 	"time"
 )
 
-func (r HelloRepository) GetHelloMessage() string {
+func (r HelloRepository) GetHelloMessage() (string, error) {
 	res, err := r.Redis.Get("mykey").Result()
 	if err == nil {
-		return res + "\n"
+
+		return fmt.Sprintf("%s\n", res), nil
 	}
 	rows, err := r.Database.Query("SELECT msg from Board LIMIT 1")
 	if err != nil {
 		log.Error(err)
-		return "DB Not Working!"
+		return "", err
 	}
 	var msg string
 	for rows.Next() {
@@ -29,8 +29,8 @@ func (r HelloRepository) GetHelloMessage() string {
 	if err != nil {
 		panic(err)
 	}
-	return msg + "\n"
+	return fmt.Sprintf("%s\n", msg), nil
 }
 
-func (r *HelloRepository) GetHelloFromMongo(ctx context.Context) {
+func (r *HelloRepository) GetHelloFromMongo() {
 }

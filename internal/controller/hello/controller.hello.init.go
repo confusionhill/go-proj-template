@@ -3,7 +3,7 @@ package hello
 import hr "project-template/internal/repository/hello"
 
 type HelloController struct {
-	repo *hr.HelloRepository
+	repo HelloRepositoryInterface
 }
 
 func Init(r *hr.HelloRepository) *HelloController {
