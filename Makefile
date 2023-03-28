@@ -4,7 +4,7 @@ rest-stop:
 	docker compose stop
 rest-down:
 	docker compose down
-rest-init:
+init:
 	go mod vendor
 	echo "Project initiated"
 rest-run:
