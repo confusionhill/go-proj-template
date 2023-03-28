@@ -2,16 +2,19 @@ package application
 
 import (
 	"log"
+	"project-template/internal/controller/auth"
 	"project-template/internal/controller/hello"
 )
 
 type CommonController struct {
-	heloController *hello.HelloController
+	helloController *hello.HelloController
+	authController  *auth.AuthController
 }
 
-func InitController(r *CommonRepository) *CommonController {
+func InitController(r *CommonRepository) (*CommonController, error) {
 	c := new(CommonController)
-	c.heloController = hello.Init(r.helloRepo)
+	c.helloController = hello.Init(r.helloRepo)
+	c.authController = auth.Init(r.authRepo)
 	log.Println("CONTROLLER INTEGRATED")
-	return c
+	return c, nil
 }

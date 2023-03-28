@@ -7,18 +7,7 @@ import (
 )
 
 func startServer(cfg *config.MainConfig, e *echo.Echo) error {
-	//e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-	//	AllowOrigins: []string{"*", "localhost"},
-	//	AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
-	//}))
-	//e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
-	//	Level: 5,
-	//}))
-	//e.Use(middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(20)))
-	//e.Use(middleware.TimeoutWithConfig(middleware.TimeoutConfig{
-	//	ErrorMessage: "Request Timeout!",
-	//	Timeout:      30 * time.Second,
-	//}))
 	addr := fmt.Sprintf(":%s", cfg.Server.Port)
+	e.HideBanner = true
 	return e.Start(addr)
 }

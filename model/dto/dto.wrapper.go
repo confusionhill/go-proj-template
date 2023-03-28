@@ -1,4 +1,4 @@
-package entity
+package dto
 
 type ResponseWrapper struct {
 	Status string      `json:"status"`

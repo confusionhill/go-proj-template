@@ -16,7 +16,10 @@ func application(cfg *config.MainConfig) error {
 	if err != nil {
 		return err
 	}
-	c := app.InitController(r)
+	c, err := app.InitController(r)
+	if err != nil {
+		return err
+	}
 	app.InitRouter(e, c)
 	return startServer(cfg, e)
 }

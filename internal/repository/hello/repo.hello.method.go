@@ -26,9 +26,6 @@ func (r HelloRepository) GetHelloMessage() (string, error) {
 	if err = r.Redis.Set("mykey", rdMsg, time.Minute*5).Err(); err != nil {
 		log.Error(err)
 	}
-	if err != nil {
-		panic(err)
-	}
 	return fmt.Sprintf("%s\n", msg), nil
 }
 

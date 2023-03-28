@@ -1,10 +1,10 @@
 files/secrets/secrets.config.json
+vendor
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
-
 # Test binary, built with `go test -c`
 *.test
 
