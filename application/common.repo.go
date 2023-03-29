@@ -2,6 +2,7 @@ package application
 
 import (
 	"log"
+	"project-template/internal/config"
 	"project-template/internal/repository/auth"
 	"project-template/internal/repository/hello"
 )
@@ -9,10 +10,12 @@ import (
 type CommonRepository struct {
 	helloRepo *hello.HelloRepository
 	authRepo  *auth.AuthRepository
+	cfg       *config.MainConfig
 }
 
-func InitRepo(rsc *CommonResource) (*CommonRepository, error) {
+func InitRepo(rsc *CommonResource, cfg *config.MainConfig) (*CommonRepository, error) {
 	r := new(CommonRepository)
+	r.cfg = cfg
 	hRepo, err := hello.Init(rsc.Database, rsc.Redis, rsc.Mongo)
 	if err != nil {
 		return nil, err

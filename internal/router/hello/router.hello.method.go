@@ -10,13 +10,13 @@ func (r HelloRouter) SayHello(c echo.Context) error {
 	res, err := r.controller.SayHello(c)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, dto.ResponseWrapper{
-			Status: "400",
+			Status: http.StatusBadRequest,
 			Msg:    "Failed",
 			Data:   nil,
 		})
 	}
 	return c.JSON(200, dto.ResponseWrapper{
-		Status: "200",
+		Status: 200,
 		Msg:    "Success",
 		Data:   res,
 	})
